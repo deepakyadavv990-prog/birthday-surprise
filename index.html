@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>A Little Birthday Surprise 💗</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+body{
+  overflow-x:hidden;
+  background:linear-gradient(135deg,#fff1f6 0%,#f0edff 52%,#e7f8ff 100%);
+  color:#392b3c;
+}
+.wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px 15px;position:relative}
+.card{
+  width:min(680px,94vw);padding:42px 27px 34px;text-align:center;
+  background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.9);
+  border-radius:32px;box-shadow:0 25px 80px rgba(70,45,90,.16);
+  backdrop-filter:blur(14px);position:relative;z-index:5;
+}
+.top-heart{font-size:48px;animation:beat 1.35s ease-in-out infinite;margin-bottom:4px}
+.kicker{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:#9a6a84;font-weight:700}
+h1{font-size:clamp(43px,10vw,76px);line-height:.98;margin:10px 0 8px;color:#d65387;letter-spacing:-2px}
+.name{font-size:clamp(25px,5vw,36px);font-weight:700;margin-bottom:18px}
+.message{font-size:17px;line-height:1.75;max-width:555px;margin:0 auto;color:#58485a}
+.divider{width:65px;height:3px;border-radius:10px;background:#e7a3bd;margin:25px auto}
+button{
+  border:0;border-radius:999px;padding:15px 26px;margin-top:22px;
+  background:#d65387;color:#fff;font-weight:700;font-size:16px;
+  cursor:pointer;box-shadow:0 10px 24px rgba(214,83,135,.25);
+  transition:.25s;
+}
+button:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(214,83,135,.3)}
+#surprise{display:none;animation:appear .7s ease;margin-top:26px}
+.note{
+  background:linear-gradient(135deg,#fff8fb,#f8f5ff);
+  border-radius:22px;padding:22px 19px;border:1px solid #f0dce7;
+}
+.note-title{font-size:22px;font-weight:800;color:#b74473;margin-bottom:8px}
+.note p{margin:0;font-size:16px;line-height:1.7}
+.footer{margin-top:25px;font-size:13px;color:#8a7b8c}
+.balloon{position:fixed;width:44px;height:55px;border-radius:50%;bottom:-90px;opacity:.48;z-index:1;animation:float 10s linear infinite}
+.balloon:after{content:"";position:absolute;left:50%;top:53px;width:1px;height:95px;background:#8d8290}
+.a{left:7%;background:#ff9fbd}.b{left:24%;background:#b6b2ff;animation-delay:2.4s}.c{right:24%;background:#ffd789;animation-delay:4.5s}.d{right:7%;background:#9de1d1;animation-delay:1.2s}
+.spark{position:fixed;font-size:20px;opacity:.5;animation:twinkle 2.4s ease-in-out infinite;z-index:2}
+.s1{top:13%;left:12%}.s2{top:22%;right:12%;animation-delay:.8s}.s3{bottom:18%;left:13%;animation-delay:1.4s}.s4{bottom:12%;right:15%;animation-delay:1.9s}
+.confetti{position:fixed;top:-15px;width:7px;height:12px;z-index:20;animation:fall 4.2s linear forwards}
+@keyframes beat{50%{transform:scale(1.13)}}
+@keyframes float{to{transform:translateY(-120vh) rotate(18deg)}}
+@keyframes twinkle{50%{transform:scale(1.35);opacity:.9}}
+@keyframes appear{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes fall{to{transform:translateY(110vh) rotate(650deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="balloon a"></div><div class="balloon b"></div><div class="balloon c"></div><div class="balloon d"></div>
+<div class="spark s1">✦</div><div class="spark s2">✧</div><div class="spark s3">✦</div><div class="spark s4">✧</div>
+
+<div class="wrap">
+  <main class="card">
+    <div class="top-heart">💗</div>
+    <div class="kicker">A little surprise for you</div>
+    <h1>Happy Birthday</h1>
+    <div class="name">Someone Special ✨</div>
+
+    <p class="message">
+      Today is your day, so I just wanted to wish you a very happy birthday.
+      I hope this year brings you lots of happiness, beautiful moments,
+      success in whatever you do, and plenty of reasons to smile. 😊
+    </p>
+
+    <div class="divider"></div>
+
+    <p class="message">
+      Keep smiling, keep being yourself, and enjoy every little moment.
+      You deserve a really beautiful year ahead. 🫶🏻
+    </p>
+
+    <button onclick="surprise()">There’s something for you 🎁</button>
+
+    <section id="surprise">
+      <div class="note">
+        <div class="note-title">One last thing… 💫</div>
+        <p>
+          No matter how busy life gets, I hope you always find reasons to be happy.
+          Have an amazing birthday and an even more amazing year ahead! ❤️
+        </p>
+      </div>
+    </section>
+
+    <div class="footer">Made with a little extra effort, just for your birthday. ✨</div>
+  </main>
+</div>
+
+<script>
+function surprise(){
+  const box=document.getElementById("surprise");
+  box.style.display="block";
+  document.querySelector("button").textContent="Happy Birthday! 🥳❤️";
+  const colors=["#ff6f9d","#8d86ff","#ffd166","#58c9ae","#ff9b71"];
+  for(let i=0;i<70;i++){
+    const c=document.createElement("div");
+    c.className="confetti";
+    c.style.left=Math.random()*100+"vw";
+    c.style.background=colors[Math.floor(Math.random()*colors.length)];
+    c.style.animationDelay=(Math.random()*0.9)+"s";
+    c.style.transform="rotate("+Math.random()*360+"deg)";
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),5200);
+  }
+}
+</script>
+</body>
+</html>
